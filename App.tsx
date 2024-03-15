@@ -3,15 +3,13 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { TailwindProvider } from "tailwind-rn";
 import utilities from "./tailwind.json";
+import CustomersScreens from "./screens/CustomersScreen";
 
 export default function App() {
   return (
     //@ts-ignore
     <TailwindProvider utilities={utilities}>
-      <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </View>
+      <CustomersScreens />
     </TailwindProvider>
   );
 }
