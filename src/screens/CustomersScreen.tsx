@@ -2,7 +2,7 @@ import { View, Text, SafeAreaView } from "react-native";
 import React from "react";
 import { useTailwind } from "tailwind-rn";
 
-const CustomersScreens = () => {
+const CustomersScreen = () => {
   const tailwind = useTailwind();
   return (
     <SafeAreaView>
@@ -11,4 +11,4 @@ const CustomersScreens = () => {
   );
 };
 
-export default CustomersScreens;
+export default CustomersScreen;
