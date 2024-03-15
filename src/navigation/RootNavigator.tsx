@@ -10,7 +10,7 @@ export type RootStackParams = {
   Order: { order: any };
 };
 
-const RootStack = createNativeStackNavigator();
+const RootStack = createNativeStackNavigator<RootStackParams>();
 const RootNavigator = () => {
   return (
     <RootStack.Navigator>
