@@ -5,14 +5,14 @@ type ItemsEntry {
   quantity: Int
 }
 
-type TrackingItemsList {
+type TrackingItems {
   customer_id: String
   items: [ItemsEntry]
 }
 
 type Query {
-  getTrackingItemsById: TrackingItemsList
+  getTrackingItemsById(id: ID!): TrackingItems
     @rest(
-      endpoint: "https://upsapp-18189-default-rtdb.firebaseio.com/trackingItems/1Z4V180W0324616505.json"
+      endpoint: "https://upsapp-18189-default-rtdb.firebaseio.com/trackingItems/$id.json"
     )
 }
