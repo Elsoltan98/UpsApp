@@ -42,7 +42,7 @@ const TabNavigator = () => {
               <Icon
                 name="box"
                 type="entypo"
-                color={focused ? ColorPalete.primary : ColorPalete.secondery}
+                color={focused ? ColorPalete.pink : ColorPalete.secondery}
               />
             );
           }

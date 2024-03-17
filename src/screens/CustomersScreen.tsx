@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   dataContainer: {
-    marginBottom: 20,
+    marginVertical: 20,
     backgroundColor: ColorPalete.primary,
   },
 });
