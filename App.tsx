@@ -6,14 +6,22 @@ import utilities from "./tailwind.json";
 import CustomersScreens from "./src/screens/CustomersScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import RootNavigator from "./src/navigation/RootNavigator";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: "https://beauceville.stepzen.net/api/awesome-bear",
+  cache: new InMemoryCache(),
+});
 
 export default function App() {
   return (
     //@ts-ignore
     <TailwindProvider utilities={utilities}>
-      <NavigationContainer>
-        <RootNavigator />
-      </NavigationContainer>
+      <ApolloProvider client={client}>
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
+      </ApolloProvider>
     </TailwindProvider>
   );
 }
