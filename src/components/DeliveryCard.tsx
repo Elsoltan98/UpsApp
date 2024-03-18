@@ -7,13 +7,20 @@ import MapView, { Marker } from "react-native-maps";
 
 type DeliveryCardProps = {
   order: Order;
+  fullWidth?: boolean;
 };
 
-const DeliveryCard: FC<DeliveryCardProps> = ({ order }) => {
+const DeliveryCard: FC<DeliveryCardProps> = ({ order, fullWidth }) => {
   const tw = useTailwind();
   return (
-    <Card containerStyle={[tw("rounded-lg my-2"), styles.container]}>
-      <View>
+    <Card
+      containerStyle={[
+        tw(`${fullWidth ? "rounded-none m-0" : "rounded-lg"} my-2`),
+        styles.container,
+        { backgroundColor: fullWidth ? ColorPalete.pink : ColorPalete.primary },
+      ]}
+    >
+      <View style={fullWidth && { height: "100%" }}>
         <Icon name="box" type="entypo" size={50} color={ColorPalete.white} />
         <View>
           <Text
@@ -53,31 +60,30 @@ const DeliveryCard: FC<DeliveryCardProps> = ({ order }) => {
             </View>
           ))}
         </View>
-      </View>
 
-      <MapView
-        initialRegion={{
-          latitude: order.Lat,
-          longitude: order.Lng,
-          latitudeDelta: 0.005,
-          longitudeDelta: 0.005,
-        }}
-        style={[tw("w-full"), { height: 200 }]}
-      >
-        <Marker
-          coordinate={{ latitude: order.Lat, longitude: order.Lng }}
-          title="Delivery Location"
-          description={order.Address}
-          identifier="destination"
-        />
-      </MapView>
+        <MapView
+          initialRegion={{
+            latitude: order.Lat,
+            longitude: order.Lng,
+            latitudeDelta: 0.005,
+            longitudeDelta: 0.005,
+          }}
+          style={[tw("w-full"), { flexGrow: 1 }, !fullWidth && { height: 200 }]}
+        >
+          <Marker
+            coordinate={{ latitude: order.Lat, longitude: order.Lng }}
+            title="Delivery Location"
+            description={order.Address}
+            identifier="destination"
+          />
+        </MapView>
+      </View>
     </Card>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: ColorPalete.primary,
     padding: 0,
     paddingTop: 16,
     shadowColor: ColorPalete.black,

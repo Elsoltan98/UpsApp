@@ -3,15 +3,20 @@ import React, { FC } from "react";
 import { Card, Icon } from "@rneui/themed";
 import { ColorPalete } from "../themes";
 import { useTailwind } from "tailwind-rn";
+import { useNavigation } from "@react-navigation/native";
+import { OrderScreenNavigationProp } from "../screens/OrdersScreen";
 
 type OrderCardProps = {
   item: Order;
 };
 
 const OrderCard: FC<OrderCardProps> = ({ item }) => {
+  const navigation = useNavigation<OrderScreenNavigationProp>();
   const tw = useTailwind();
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("Order", { order: item })}
+    >
       <Card containerStyle={tw("px-5 rounded-lg")}>
         <View style={tw("flex-row justify-between items-center")}>
           <View>
