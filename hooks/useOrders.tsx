@@ -6,6 +6,8 @@ const useOrders = () => {
   const { loading, error, data } = useQuery(GET_ORDERS);
   const [orders, setOrders] = useState<Order[]>([]);
 
+  console.log("data: ", data.getOrders[0].value);
+
   useEffect(() => {
     if (!data) return;
 

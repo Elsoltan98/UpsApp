@@ -13,6 +13,8 @@ import useOrders from "../../hooks/useOrders";
 import { ColorPalete } from "../themes";
 import { Button, Image } from "@rneui/themed";
 import OrderCard from "../components/OrderCard";
+import { useQuery } from "@apollo/client";
+import { GET_CUSTOMERS } from "../../graphql/quieries";
 
 export type OrderScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabStackParamsList, "Orders">,
